@@ -12,7 +12,7 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <Package className="h-8 w-8 text-indigo-600" />
-              <span className="font-bold text-xl text-gray-800">TrackIt</span>
+              <span className="font-bold text-xl text-gray-800">ShipEdge</span>
             </Link>
           </div>
 
