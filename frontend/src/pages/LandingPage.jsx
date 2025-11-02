@@ -1,10 +1,10 @@
 // src/pages/LandingPage.jsx
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Search } from 'lucide-react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Search } from "lucide-react";
 
 const LandingPage = () => {
-  const [orderId, setOrderId] = useState('');
+  const [orderId, setOrderId] = useState("");
   const navigate = useNavigate();
 
   const handleTrackOrder = (e) => {
@@ -15,43 +15,64 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center py-20 md:py-32 bg-gray-50">
-      <div className="text-center max-w-2xl mx-auto px-4">
-        <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-          Track Your Order
-        </h1>
-        <p className="mt-4 text-xl text-gray-600">
-          Enter your unique order ID below to see the status of your delivery.
-        </p>
+    <div className="min-h-screen flex flex-col justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-600 text-white relative overflow-hidden">
+      {/* Subtle background decoration */}
+      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_30%,_white,transparent_60%)]"></div>
 
-        <form
-          onSubmit={handleTrackOrder}
-          className="mt-10 flex flex-col sm:flex-row sm:max-w-lg sm:mx-auto"
-        >
-          <div className="flex-1 min-w-0">
-            <label htmlFor="order-id" className="sr-only">
-              Order ID
-            </label>
+      <div className="relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-20">
+        {/* Left Section - Text and Form */}
+        <div className="text-center md:text-left max-w-lg mx-auto md:mx-0">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 drop-shadow-md">
+            Track Your Order Instantly
+          </h1>
+          <p className="text-lg sm:text-xl text-indigo-100 mb-8">
+            Enter your order ID below to get real-time delivery updates in just a click.
+          </p>
+
+          <form
+            onSubmit={handleTrackOrder}
+            className="flex flex-col sm:flex-row items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-2xl shadow-lg"
+          >
             <input
-              id="order-id"
               type="text"
+              id="order-id"
               value={orderId}
               onChange={(e) => setOrderId(e.target.value)}
-              className="block w-full px-5 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Enter your order ID (e.g., A1B2C3D4)"
+              placeholder="Enter Order ID (e.g., A1B2C3D4)"
+              className="flex-1 w-full px-4 py-3 rounded-xl border border-transparent bg-white/90 text-gray-800 placeholder-gray-500 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
             />
-          </div>
-          <div className="mt-3 sm:mt-0 sm:ml-3 sm:flex-shrink-0">
             <button
               type="submit"
-              className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold bg-indigo-500 hover:bg-indigo-700 text-white shadow-md transition-all duration-200"
             >
-              <Search className="w-5 h-5 mr-2" />
-              Track Order
+              <Search className="w-5 h-5" />
+              Track
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
+
+        {/* Right Section - Illustration */}
+        <div className="hidden md:block mt-12 md:mt-0">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/8984/8984911.png"
+            alt="Tracking Illustration"
+            className="w-[400px] lg:w-[500px] drop-shadow-2xl animate-float"
+          />
+        </div>
       </div>
+
+      {/* Floating animation */}
+      <style>
+        {`
+          @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+          }
+          .animate-float {
+            animation: float 4s ease-in-out infinite;
+          }
+        `}
+      </style>
     </div>
   );
 };
